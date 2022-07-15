@@ -22,10 +22,11 @@ public class BOJ14888 {
 		st = new StringTokenizer(br.readLine());
 		for(int i=0;i<arr.length;i++)
 			arr[i] = Integer.parseInt(st.nextToken());
+		
 		st = new StringTokenizer(br.readLine());
 		for(int i=0;i<ort.length;i++)
 			ort[i] = Integer.parseInt(st.nextToken());
-
+		
 		func(arr[0],1);
 		System.out.println(max+"\n"+min);
 	}
@@ -44,33 +45,25 @@ public class BOJ14888 {
 		
 			int result=0;
 			for(int i=0;i<ort.length;i++) {
-				if(ort[i]!=0) {
+				if(ort[i]> 0) {
 					ort[i]--;
-				
 				switch(i){
 					case 0:
-						result = num+ arr[idx];
+						func(num+arr[idx], idx+1);
 						break;
 					case 1:
-						result = num- arr[idx];
+						func(num-arr[idx], idx+1);
 						break;
 					case 2:
-						result = num*arr[idx];
+						func(num*arr[idx], idx+1);
 						break;
 					case 3:
-						if(num<0&&arr[idx]>0)
-						{
-							num*=-1;
-							result = num /arr[idx];
-							result *=-1;
-						}else
-							result = num/arr[idx];
-						break;
+						func(num/arr[idx], idx+1);
+							break;
 					}
-				
+					ort[i]++;
 				}
-				func(result,idx+1);
-				ort[i]++;
+				
 		}
 		
 		
