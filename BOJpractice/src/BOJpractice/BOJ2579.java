@@ -20,9 +20,10 @@ public class BOJ2579 {
 		}
 		
 		if(n>=3) {
-			dp[3] = Math.min(arr[1]+arr[3],arr[2]+arr[3]);
+			dp[3] = Math.max(arr[1]+arr[3],arr[2]+arr[3]);
+			
 			for(int i=4;i<n+1;i++) {
-			dp[i] = Math.min(dp[i-2], arr[i-1]+dp[i-3])+arr[i];
+			dp[i] = Math.max(dp[i-2], arr[i-1]+dp[i-3])+arr[i];
 		}
 			}
 		
