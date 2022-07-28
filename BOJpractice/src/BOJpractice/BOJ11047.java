@@ -25,7 +25,7 @@ public class BOJ11047 {
 			}
 		}
 		System.out.println(cnt);
-		
+		sc.close();
 		
 		
 		
