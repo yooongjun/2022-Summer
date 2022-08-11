@@ -12,49 +12,45 @@ public class BOJ11054 {
 		int dp[] = new int[n+1];
 		int reverse_dp[] = new int[n+1];
 		int tmp[] = new int[n+1];
-		ArrayList<Integer> right = new ArrayList<>();   
-		ArrayList<Integer> left;
+		int max = -1;
+		
+		ArrayList<Integer> al = new ArrayList<>();   
+		
 		for(int i=1;i<arr.length;i++) {
 			arr[i] = sc.nextInt();
 		}	
 		
 		for(int i=1;i<n+1;i++) {
-			if(right.size()==0||right.get(right.size()-1)<arr[i]) {
-				right.add(arr[i]);
+			if(al.size()==0||al.get(al.size()-1)<arr[i]) {
+				al.add(arr[i]);
 			}else {
-				right.set(lowerBound(right,arr[i],0),arr[i]);
+				al.set(lowerBound(al,arr[i],0),arr[i]);
 			}
-			tmp[i] = right.get(right.size()-1);
-			dp[i] = right.size();
+			tmp[i] = al.get(al.size()-1);
+			dp[i] = al.size();
 		}
 
-		int idx=0;
-		
 		for(int k=0;k<n+1;k++)
 		{		
-			 left = new ArrayList<>();
-			for(int i=idx+1;i<n+1;i++) {
+			al = new ArrayList<>();
+			for(int i=k+1;i<n+1;i++) {
 				
-			if(left.size()==0 && tmp[idx]==arr[i]) {
+			if(al.size()==0 && tmp[k]==arr[i]) {
 				continue;
 			}
 				
-			if(left.size()==0||left.get(left.size()-1)>arr[i]) {
-				left.add(arr[i]);
+			if(al.size()==0||al.get(al.size()-1)>arr[i]) {
+				al.add(arr[i]);
 			}else {
-				if(upperBound(left,arr[i],0)==0&&tmp[idx]==arr[i]) {
+				if(upperBound(al,arr[i],0)==0&&tmp[k]==arr[i]) {
 					continue;
 				}
-				left.set(upperBound(left,arr[i],0),arr[i]);
+				al.set(upperBound(al,arr[i],0),arr[i]);
 			}
 		}
-			idx++;
-			reverse_dp[k] = left.size();
+			reverse_dp[k] = al.size();
 		}
 		
-		
-		
-		int max =0;
 		for(int i =0; i<n+1;i++) {
 			max = Math.max(max, dp[i]+reverse_dp[i]);
 		}
