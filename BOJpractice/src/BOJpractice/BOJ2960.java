@@ -32,11 +32,6 @@ public class BOJ2960 {
 			}			
 		}
 		
-		
-		
-		
-		
-		
 	}
 
 }
