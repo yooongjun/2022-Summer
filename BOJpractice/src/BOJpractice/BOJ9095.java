@@ -20,8 +20,8 @@ public class BOJ9095 {
 					dp[j] = dp[j-1]+ dp[j-2] + dp[j-3];
 				}
 				System.out.println(dp[n[i]]);
-			}else {
-				for(int j=1;i<=n[i];j++) {
+			}else {			
+				for(int j=1;j<=n[i];j++) {			
 					dp[j] = j;
 				}
 				System.out.println(dp[n[i]]);
