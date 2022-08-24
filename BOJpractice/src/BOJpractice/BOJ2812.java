@@ -1,7 +1,8 @@
 package BOJpractice;
 
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
+
 
 public class BOJ2812 {
 
@@ -9,30 +10,28 @@ public class BOJ2812 {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		int k = sc.nextInt();
-		int	cur = 0;
+		int cnt = k;
 		String s = sc.next();
-		int arr[] = new int[n+1];
-		ArrayList<Integer> max = new ArrayList<>();
+		Stack<Integer> max = new Stack<>();
+
 		
-		for(int i=1; i<arr.length; i++)
-			arr[i] = s.charAt(i-1)-48;
-		
-		while(max.size()!=n-k) {
-			int tmp=arr[cur+1];
-			for(int i=cur+1; i< n+1 ; i++) {
-				if(tmp < arr[i])
-				{
-					tmp = arr[i];
-					cur = i;
-				}
-				if(i > n - (k-max.size()) +1)
-					break;
-			}
-			max.add(tmp);
-		}
+		for(int i=0; i<n; i++)
+		{
 			
-		System.out.println(max);
-	
+			while(!max.isEmpty()&&max.peek()< s.charAt(i)-'0'&& cnt>0)
+				{	
+					max.pop();
+					cnt--;
+				}
+			max.add(s.charAt(i)-'0');
+		}
+		
+		for(int i=0;i<n-k; i++)
+		{
+			System.out.print(max.get(i));
+		}
+		
+		
 	}
 
 }
