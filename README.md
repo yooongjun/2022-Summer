@@ -1,5 +1,6 @@
-# Algorithm
-문제 출처 
+# 2022 Summer Algorithm Study
+
+문제 출처
 
 Baekjoon Online Judge
 
